@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 21-Day Sales Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E8;
+    --paper-2:#EDE7DA;
+    --ink:#16140F;
+    --ink-soft:#56514644;
+    --muted:#615B4F;
+    --pine:#173E33;
+    --pine-2:#0E2C24;
+    --pine-line:#2C5345;
+    --gold:#B98A2E;
+    --line:#D8D1C2;
+    --line-d:rgba(245,241,232,.16);
+    --display:'Fraunces',Georgia,serif;
+    --body:'Archivo',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--pine);color:var(--paper)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.22,.7,.2,1),transform .8s cubic-bezier(.22,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  .kicker{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:100;background:rgba(245,241,232,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand i{font-style:italic;color:var(--pine)}
+  .nav-links{display:flex;gap:36px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:14px;font-weight:600;background:var(--pine);color:var(--paper);padding:11px 22px;border-radius:4px;text-decoration:none;transition:background .2s}
+  .nav-cta:hover{background:var(--pine-2)}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:104px 0 96px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:64px;align-items:end}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;align-items:start}}
+  .hero .kicker{display:block;margin-bottom:26px}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(42px,6.4vw,80px);line-height:1.02;letter-spacing:-.02em;max-width:15ch}
+  h1 em{font-style:italic;color:var(--pine)}
+  .hero-sub{font-size:19px;color:var(--muted);max-width:46ch;margin:30px 0 38px;line-height:1.6}
+  .hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .btn{font-family:var(--body);font-weight:600;font-size:16px;background:var(--pine);color:var(--paper);padding:16px 32px;border-radius:5px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .2s}
+  .btn:hover{background:var(--pine-2);transform:translateY(-1px)}
+  .link{font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--gold);padding-bottom:2px;transition:color .2s}
+  .link:hover{color:var(--pine)}
+  .hero-aside{border-left:1px solid var(--line);padding-left:36px}
+  @media(max-width:900px){.hero-aside{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:36px}}
+  .aside-row{padding:18px 0;border-bottom:1px solid var(--line)}
+  .aside-row:last-child{border-bottom:none}
+  .aside-row .n{font-family:var(--display);font-weight:500;font-size:34px;color:var(--pine);line-height:1}
+  .aside-row .t{font-size:13.5px;color:var(--muted);margin-top:7px}
+
+  /* ---------- PROBLEM (dark) ---------- */
+  .problem{background:var(--pine);color:var(--paper);padding:100px 0}
+  .problem .kicker{color:var(--gold);display:block;margin-bottom:24px}
+  .problem-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  @media(max-width:880px){.problem-grid{grid-template-columns:1fr;gap:44px}}
+  .problem h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.015em;max-width:15ch}
+  .problem h2 em{font-style:italic;color:#E9C97A}
+  .problem p.lead{font-size:18px;color:#C6D2CB;margin-top:26px;max-width:46ch;line-height:1.65}
+  .frict{border-top:1px solid var(--pine-line)}
+  .frict-row{display:flex;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--pine-line)}
+  .frict-row .i{font-family:var(--display);font-size:15px;color:var(--gold);font-weight:500;flex-shrink:0;width:30px}
+  .frict-row p{font-size:16.5px;color:var(--paper);line-height:1.5}
+  .frict-row p b{color:#E9C97A;font-weight:500;font-style:italic;font-family:var(--display)}
+
+  /* ---------- SECTION ---------- */
+  .sec{padding:104px 0}
+  .sec-head{max-width:60ch}
+  .sec-head .kicker{display:block;margin-bottom:20px}
+  .sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.04;letter-spacing:-.018em;max-width:18ch}
+  .sec-head h2 em{font-style:italic;color:var(--pine)}
+  .sec-head p{font-size:18px;color:var(--muted);margin-top:22px;max-width:54ch;line-height:1.6}
+
+  /* ---------- FORMAT ---------- */
+  .format-list{margin-top:64px;border-top:1px solid var(--line)}
+  .fmt{display:grid;grid-template-columns:80px 1fr 2fr;gap:40px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line);transition:background .25s}
+  .fmt:hover{background:var(--paper-2)}
+  @media(max-width:760px){.fmt{grid-template-columns:1fr;gap:10px;padding:28px 0}}
+  .fmt .num{font-family:var(--display);font-weight:400;font-size:20px;color:var(--gold)}
+  .fmt h4{font-family:var(--display);font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .fmt p{font-size:16px;color:var(--muted);line-height:1.6}
+  .assignment{margin-top:56px;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:38px 42px;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+  .assignment .lbl{font-family:var(--display);font-style:italic;font-size:17px;color:var(--pine);flex-shrink:0}
+  .assignment p{font-size:19px;line-height:1.5;flex:1;min-width:280px;color:var(--ink)}
+  .assignment p b{color:var(--pine);font-weight:600}
+
+  /* ---------- CALENDAR ---------- */
+  .cal{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .week-tabs{display:flex;gap:0;margin:52px 0 14px;border-bottom:1px solid var(--line)}
+  @media(max-width:600px){.week-tabs{flex-direction:column;border-bottom:none}}
+  .wtab{font-family:var(--body);font-weight:600;font-size:15px;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:16px 26px 18px;cursor:pointer;transition:color .2s,border-color .2s;text-align:left;margin-bottom:-1px}
+  @media(max-width:600px){.wtab{border-bottom:1px solid var(--line);padding:16px 0}}
+  .wtab:hover{color:var(--ink)}
+  .wtab.active{color:var(--pine);border-color:var(--pine)}
+  .wtab small{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:13px;color:var(--gold);margin-top:3px}
+
+  .week-panel{display:none}
+  .week-panel.show{display:block;animation:fade .45s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .week-meta{font-size:16px;color:var(--muted);margin:30px 0 8px;max-width:62ch;line-height:1.6}
+  .week-meta b{color:var(--ink);font-weight:600}
+
+  .day{border-bottom:1px solid var(--line)}
+  .day-head{display:flex;align-items:center;gap:28px;padding:26px 4px;cursor:pointer;user-select:none}
+  .day-num{font-family:var(--display);font-weight:500;font-size:14px;letter-spacing:.06em;color:var(--gold);flex-shrink:0;width:44px}
+  .day-title{font-family:var(--display);font-weight:500;font-size:clamp(17px,2.1vw,22px);letter-spacing:-.01em;flex:1;line-height:1.25;transition:color .2s}
+  .day:hover .day-title{color:var(--pine)}
+  .day-tog{flex-shrink:0;width:26px;height:26px;position:relative;transition:transform .35s cubic-bezier(.22,.7,.2,1)}
+  .day-tog::before,.day-tog::after{content:"";position:absolute;background:var(--pine);border-radius:2px}
+  .day-tog::before{top:12px;left:3px;right:3px;height:1.5px}
+  .day-tog::after{left:12px;top:3px;bottom:3px;width:1.5px;transition:opacity .3s}
+  .day.open .day-tog{transform:rotate(90deg)}
+  .day.open .day-tog::after{opacity:0}
+  .day-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,.7,.2,1)}
+  .day-body-in{padding:0 0 30px 72px;max-width:60ch}
+  @media(max-width:600px){.day-body-in{padding:0 0 26px 0}}
+  .hook-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+  .hook{font-family:var(--display);font-weight:400;font-style:italic;font-size:21px;line-height:1.45;color:var(--ink)}
+
+  /* ---------- AUDIENCE ---------- */
+  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--line)}
+  @media(max-width:800px){.aud-grid{grid-template-columns:1fr}}
+  .aud{padding:42px 36px 48px;border-right:1px solid var(--line);transition:background .25s}
+  .aud:last-child{border-right:none}
+  @media(max-width:800px){.aud{border-right:none;border-bottom:1px solid var(--line)}.aud:last-child{border-bottom:none}}
+  .aud:hover{background:var(--paper-2)}
+  .aud .n{font-family:var(--display);font-style:italic;font-size:17px;color:var(--gold);margin-bottom:24px}
+  .aud h4{font-family:var(--display);font-weight:600;font-size:25px;letter-spacing:-.01em;margin-bottom:14px}
+  .aud p{font-size:15.5px;color:var(--muted);line-height:1.65}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--pine-2);color:var(--paper);padding:108px 0}
+  .cta .wrap{max-width:780px;text-align:center}
+  .cta .kicker{color:var(--gold);display:block;margin-bottom:24px}
+  .cta h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,5.2vw,60px);line-height:1.04;letter-spacing:-.018em}
+  .cta h2 em{font-style:italic;color:#E9C97A}
+  .cta p{font-size:18px;color:#C6D2CB;margin:24px auto 42px;max-width:50ch;line-height:1.6}
+  .signup{display:flex;gap:12px;max-width:520px;margin:0 auto}
+  @media(max-width:520px){.signup{flex-direction:column}}
+  .signup input{flex:1;font-family:var(--body);font-size:16px;padding:17px 20px;border-radius:5px;border:1px solid var(--pine-line);background:rgba(245,241,232,.06);color:var(--paper);outline:none;transition:border-color .2s,background .2s}
+  .signup input::placeholder{color:#8FA39A}
+  .signup input:focus{border-color:var(--gold);background:rgba(245,241,232,.1)}
+  .signup button{font-family:var(--body);font-weight:600;font-size:16px;background:var(--gold);color:var(--pine-2);border:none;cursor:pointer;padding:17px 30px;border-radius:5px;white-space:nowrap;transition:background .2s,transform .2s}
+  .signup button:hover{background:#CC9C3C;transform:translateY(-1px)}
+  .signup button:disabled{opacity:.6;cursor:wait;transform:none}
+  .signup-error{display:none;font-size:14.5px;color:#E9A38A;margin-top:18px}
+  .signup-error.show{display:block}
+  .cta-fine{font-size:13.5px;color:#8FA39A;margin-top:20px}
+  .signup.ok{display:none}
+  .signup-done{display:none;font-family:var(--display);font-style:italic;font-size:22px;color:#E9C97A}
+  .signup.ok + .signup-done{display:block}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--pine-2);color:var(--paper);padding:0 0 56px}
+  .foot-top{border-top:1px solid var(--pine-line);padding-top:52px;display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+  .foot-brand{font-family:var(--display);font-weight:600;font-size:22px}
+  .foot-brand i{font-style:italic;color:#E9C97A}
+  .foot-blurb{color:#A9B8B0;font-size:15px;max-width:34ch;margin-top:16px;line-height:1.6}
+  .foot-nav{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E938A;margin-bottom:18px;font-weight:600}
+  .foot-col a{display:block;color:#C6D2CB;text-decoration:none;font-size:15px;margin-bottom:12px;transition:color .2s}
+  .foot-col a:hover{color:var(--paper)}
+  .foot-bottom{margin-top:56px;padding-top:26px;border-top:1px solid var(--pine-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13.5px;color:#7E938A}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand">Sell<i>Daily</i></div>
+    <div class="nav-links">
+      <a href="#problem">The Case</a>
+      <a href="#format">The Method</a>
+      <a href="#calendar">The Programme</a>
+      <a href="#who">Who It's For</a>
+    </div>
+    <a href="#join" class="nav-cta">Enrol Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker rv">A 21-Day Programme · Daily at 8:00 AM</span>
+        <h1 class="rv" style="transition-delay:.05s">Build the skill, system and <em>confidence</em> to sell every day.</h1>
+        <p class="hero-sub rv" style="transition-delay:.12s">A structured daily programme for business owners and sales teams across Nigeria and beyond. One precise lesson, one real assignment, and a sales system that no longer depends on luck.</p>
+        <div class="hero-actions rv" style="transition-delay:.18s">
+          <a href="#join" class="btn">Enrol in the Programme</a>
+          <a href="#calendar" class="link">Review the full 21 days</a>
+        </div>
+      </div>
+      <div class="hero-aside rv" style="transition-delay:.24s">
+        <div class="aside-row"><div class="n">21</div><div class="t">Daily lessons, delivered each morning</div></div>
+        <div class="aside-row"><div class="n">05</div><div class="t">A consistent format you can act on in minutes</div></div>
+        <div class="aside-row"><div class="n">01</div><div class="t">Assignment a day — discipline over theory</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <span class="kicker">The Case for Change</span>
+    <div class="problem-grid">
+      <div class="rv">
+        <h2>Most businesses are not broke. They simply have not learned how to <em>sell.</em></h2>
+        <p class="lead">The problem is rarely capital — it is structure. Buyers have changed. They research through social media, reviews, comments and AI long before they reply to you. The decisive question is whether your sales method has changed with them.</p>
+      </div>
+      <div class="frict rv" style="transition-delay:.1s">
+        <div class="frict-row"><span class="i">01</span><p>Chasing customers instead of <b>positioning value</b></p></div>
+        <div class="frict-row"><span class="i">02</span><p>Deals lost because <b>no one follows up</b></p></div>
+        <div class="frict-row"><span class="i">03</span><p>"I'll think about it" treated as <b>rejection</b></p></div>
+        <div class="frict-row"><span class="i">04</span><p>A team that is <b>busy but not productive</b></p></div>
+        <div class="frict-row"><span class="i">05</span><p>Depending on <b>referrals alone</b>, with no system</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="sec" id="format">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">The Daily Method</span>
+      <h2>A disciplined format, delivered the <em>same way</em> every morning.</h2>
+      <p>No lengthy videos or theory dumps. Each day arrives at 8:00 in a five-part structure designed to become a habit — and to produce action before noon.</p>
+    </div>
+    <div class="format-list">
+      <div class="fmt rv"><span class="num">01</span><h4>The Sales Truth</h4><p>One sharp principle that reframes how you approach the day's topic.</p></div>
+      <div class="fmt rv"><span class="num">02</span><h4>The Mistake</h4><p>One common error business owners make — named clearly so you can stop it.</p></div>
+      <div class="fmt rv"><span class="num">03</span><h4>The Strategy</h4><p>One practical tactic you can apply to live prospects the same day.</p></div>
+      <div class="fmt rv"><span class="num">04</span><h4>The Assignment</h4><p>One concrete task, with a deadline. Execution is the point.</p></div>
+      <div class="fmt rv"><span class="num">05</span><h4>The Call to Action</h4><p>One prompt to post, follow up, or close before the day is out.</p></div>
+    </div>
+    <div class="assignment rv">
+      <span class="lbl">A typical day's assignment —</span>
+      <p>Message <b>10 prospects</b>, follow up with <b>5 existing leads</b>, and publish <b>one piece of sales content</b> before noon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section class="cal sec" id="calendar">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">The Full Programme</span>
+      <h2>Three weeks. One complete <em>sales system.</em></h2>
+      <p>The curriculum moves deliberately: first the mindset beneath every sale, then the tactics that close, then the structure that keeps selling without you. Select any day to read its focus.</p>
+    </div>
+
+    <div class="week-tabs rv">
+      <button class="wtab active" data-week="1">Week One<small>Rewire the fundamentals</small></button>
+      <button class="wtab" data-week="2">Week Two<small>Sharpen the selling</small></button>
+      <button class="wtab" data-week="3">Week Three<small>Build the system</small></button>
+    </div>
+
+    <div class="week-panel show" data-panel="1">
+      <p class="week-meta"><b>Days 1–7 · Rewire the fundamentals.</b> Correct the mindset and psychology that sit underneath every sale before touching a single tactic.</p>
+      <div class="days"></div>
+    </div>
+    <div class="week-panel" data-panel="2">
+      <p class="week-meta"><b>Days 8–14 · Sharpen the selling.</b> The channels, offers and tools that turn conversations into closed deals.</p>
+      <div class="days"></div>
+    </div>
+    <div class="week-panel" data-panel="3">
+      <p class="week-meta"><b>Days 15–21 · Build the system.</b> Convert three weeks of effort into a routine and structure that sells daily.</p>
+      <div class="days"></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="sec" id="who">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Who It Serves</span>
+      <h2>Built for those who are <em>done guessing.</em></h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud rv">
+        <div class="n">01</div>
+        <h4>Business Owners</h4>
+        <p>You carry every responsibility, and sales is the one that keeps you awake. Acquire a repeatable way to bring in customers that does not rely on luck or word of mouth.</p>
+      </div>
+      <div class="aud rv" style="transition-delay:.08s">
+        <div class="n">02</div>
+        <h4>Sales Teams</h4>
+        <p>Activity is high but the numbers stall. Give the team a shared routine, language and standard that converts effort into measurable results.</p>
+      </div>
+      <div class="aud rv" style="transition-delay:.16s">
+        <div class="n">03</div>
+        <h4>Online Sellers</h4>
+        <p>Selling on WhatsApp, Instagram, Facebook or LinkedIn, locally or globally. Learn to turn quiet observers into paying customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="join">
+  <div class="wrap rv">
+    <span class="kicker">Begin Tomorrow at 8:00 AM</span>
+    <h2>Do not sell for 21 days. Build a system that <em>keeps selling.</em></h2>
+    <p>Enrolment is free. Each morning you receive one lesson, one assignment and one prompt to act — for twenty-one days.</p>
+    <form class="signup" id="signupForm" action="https://formspree.io/f/xwvjezkz" method="POST">
+      <input type="email" name="email" placeholder="Your best email address" required>
+      <input type="hidden" name="_subject" value="New 21-Day Sales Programme enrolment">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <button type="submit">Enrol in the Programme</button>
+    </form>
+    <div class="signup-done">Enrolment confirmed. Day One arrives tomorrow at 8:00 AM.</div>
+    <p class="signup-error" role="alert"></p>
+    <p class="cta-fine">No spam. Unsubscribe at any time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Sell<i>Daily</i></div>
+        <p class="foot-blurb">A 21-day programme to build the skill, system and confidence to sell every day.</p>
+      </div>
+      <div class="foot-nav">
+        <div class="foot-col">
+          <h5>Programme</h5>
+          <a href="#problem">The Case</a>
+          <a href="#format">The Method</a>
+          <a href="#calendar">The 21 Days</a>
+        </div>
+        <div class="foot-col">
+          <h5>Get Started</h5>
+          <a href="#who">Who It's For</a>
+          <a href="#join">Enrol Free</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SellDaily. All rights reserved.</span>
+      <span>Built for sellers everywhere.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const days=[
+    {d:1,t:"Why Most Businesses Are Not Broke — They Just Don't Know How to Sell",h:"Your problem may not be capital. It may be poor sales structure."},
+    {d:2,t:"The New Rules of Selling in 2026",h:"Customers have changed. Have your sales methods changed?"},
+    {d:3,t:"How to Sell Without Begging or Looking Desperate",h:"Stop chasing customers — start positioning value."},
+    {d:4,t:"The Psychology of Why People Buy",h:"People don't buy because you need money. They buy because they see value."},
+    {d:5,t:"How to Turn Strangers Into Paying Customers Online",h:"Your next customer is watching you quietly."},
+    {d:6,t:"The Power of Follow-Up: Money Is in the Reminder",h:"Most sales are lost because nobody followed up properly."},
+    {d:7,t:"How to Handle 'I Will Think About It' Like a Professional",h:"That objection is not rejection. It is a sales opportunity."},
+    {d:8,t:"How to Sell High-Ticket Products in Nigeria and Globally",h:"Premium clients are not looking for cheap. They are looking for trust."},
+    {d:9,t:"How to Use WhatsApp to Close More Sales Daily",h:"Your WhatsApp is either a sales machine or just a chatting app."},
+    {d:10,t:"How to Create Offers People Cannot Ignore",h:"People don't reject good offers. They reject confusing offers."},
+    {d:11,t:"The Mistakes Killing Your Sales Team's Performance",h:"Your team may be busy but not productive."},
+    {d:12,t:"How to Build Trust Before Asking for Money",h:"In today's market, trust closes faster than pressure."},
+    {d:13,t:"How to Sell With Social Proof, Testimonials and Results",h:"People believe results more than promises."},
+    {d:14,t:"How to Use AI to Prospect, Write Messages and Follow Up Faster",h:"AI will not replace salespeople. Salespeople using AI will outperform others."},
+    {d:15,t:"The 5 Types of Customers and How to Sell to Each One",h:"Stop using one sales approach for every buyer."},
+    {d:16,t:"How to Turn Rejections Into Future Sales",h:"'No' today does not always mean 'no' forever."},
+    {d:17,t:"How to Build a Daily Sales Routine That Produces Results",h:"Sales growth is not luck. It is a routine."},
+    {d:18,t:"How Business Owners Can Stop Depending Only on Referrals",h:"Referral is good, but it should not be your only sales strategy."},
+    {d:19,t:"How to Sell Through Content on Instagram, Facebook, LinkedIn and Email",h:"Your content should not just earn likes. It should bring leads."},
+    {d:20,t:"How to Close Sales Without Giving Too Much Discount",h:"Discount is not always the answer. Value positioning is."},
+    {d:21,t:"From Sales Struggle to Sales System",h:"Don't just sell for 21 days. Build a system that keeps selling."}
+  ];
+  function build(panel,slice){
+    const wrap=document.querySelector(`.week-panel[data-panel="${panel}"] .days`);
+    slice.forEach(item=>{
+      const el=document.createElement('div');el.className='day';
+      el.innerHTML=`<div class="day-head"><span class="day-num">Day ${String(item.d).padStart(2,'0')}</span><span class="day-title">${item.t}</span><span class="day-tog"></span></div><div class="day-body"><div class="day-body-in"><div class="hook-lbl">Core Idea</div><div class="hook">"${item.h}"</div></div></div>`;
+      const head=el.querySelector('.day-head'),body=el.querySelector('.day-body');
+      head.addEventListener('click',()=>{
+        const open=el.classList.contains('open');
+        wrap.querySelectorAll('.day.open').forEach(d=>{d.classList.remove('open');d.querySelector('.day-body').style.maxHeight=null;});
+        if(!open){el.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+      });
+      wrap.appendChild(el);
+    });
+  }
+  build(1,days.slice(0,7));build(2,days.slice(7,14));build(3,days.slice(14,21));
+  document.querySelectorAll('.wtab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.wtab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.week-panel').forEach(p=>p.classList.remove('show'));
+      tab.classList.add('active');
+      document.querySelector(`.week-panel[data-panel="${tab.dataset.week}"]`).classList.add('show');
+    });
+  });
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  const form=document.getElementById('signupForm');
+  const errBox=document.querySelector('.signup-error');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const btn=form.querySelector('button');
+    errBox.classList.remove('show');errBox.textContent='';
+    btn.disabled=true;btn.textContent='Sending…';
+    try{
+      const res=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      });
+      if(res.ok){
+        form.classList.add('ok');           // reveals the in-place success message
+      }else{
+        const data=await res.json().catch(()=>({}));
+        const msg=(data.errors&&data.errors.map(x=>x.message).join(', '))||'Something went wrong. Please try again.';
+        errBox.textContent=msg;errBox.classList.add('show');
+        btn.disabled=false;btn.textContent='Enrol in the Programme';
+      }
+    }catch(err){
+      errBox.textContent='Network error — please check your connection and try again.';
+      errBox.classList.add('show');
+      btn.disabled=false;btn.textContent='Enrol in the Programme';
+    }
+  });
+</script>
+</body>
+</html>
