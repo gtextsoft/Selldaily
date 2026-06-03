@@ -147,27 +147,52 @@
   .aud h4{font-family:var(--display);font-weight:600;font-size:25px;letter-spacing:-.01em;margin-bottom:14px}
   .aud p{font-size:15.5px;color:var(--muted);line-height:1.65}
 
-  /* ---------- CTA ---------- */
-  .cta{background:var(--pine-2);color:var(--paper);padding:108px 0}
-  .cta .wrap{max-width:780px;text-align:center}
-  .cta .kicker{color:var(--gold);display:block;margin-bottom:24px}
-  .cta h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,5.2vw,60px);line-height:1.04;letter-spacing:-.018em}
-  .cta h2 em{font-style:italic;color:#E9C97A}
-  .cta p{font-size:18px;color:#C6D2CB;margin:24px auto 42px;max-width:50ch;line-height:1.6}
-  .signup{display:flex;gap:12px;max-width:520px;margin:0 auto}
-  @media(max-width:520px){.signup{flex-direction:column}}
-  .signup input{flex:1;font-family:var(--body);font-size:16px;padding:17px 20px;border-radius:5px;border:1px solid var(--pine-line);background:rgba(245,241,232,.06);color:var(--paper);outline:none;transition:border-color .2s,background .2s}
-  .signup input::placeholder{color:#8FA39A}
-  .signup input:focus{border-color:var(--gold);background:rgba(245,241,232,.1)}
-  .signup button{font-family:var(--body);font-weight:600;font-size:16px;background:var(--gold);color:var(--pine-2);border:none;cursor:pointer;padding:17px 30px;border-radius:5px;white-space:nowrap;transition:background .2s,transform .2s}
-  .signup button:hover{background:#CC9C3C;transform:translateY(-1px)}
-  .signup button:disabled{opacity:.6;cursor:wait;transform:none}
-  .signup-error{display:none;font-size:14.5px;color:#E9A38A;margin-top:18px}
+  /* ---------- APPLY / CTA ---------- */
+  .cta{background:var(--pine-2);color:var(--paper);padding:104px 0}
+  .cta .kicker{color:var(--gold);display:block;margin-bottom:22px}
+  .apply-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:start}
+  @media(max-width:920px){.apply-grid{grid-template-columns:1fr;gap:48px}}
+  .apply-intro h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,4.6vw,54px);line-height:1.05;letter-spacing:-.018em;max-width:14ch}
+  .apply-intro h2 em{font-style:italic;color:#E9C97A}
+  .apply-intro p{font-size:18px;color:#C6D2CB;margin:24px 0 36px;max-width:44ch;line-height:1.6}
+  .next-list{border-top:1px solid var(--pine-line)}
+  .next-list .row{display:flex;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--pine-line)}
+  .next-list .row .i{font-family:var(--display);font-style:italic;font-size:15px;color:var(--gold);flex-shrink:0;width:26px}
+  .next-list .row p{font-size:15.5px;color:#C6D2CB;margin:0;max-width:none}
+
+  .apply-card{background:var(--paper);color:var(--ink);border-radius:10px;padding:42px 40px}
+  @media(max-width:560px){.apply-card{padding:32px 24px}}
+  .apply-card .form-kick{font-family:var(--display);font-style:italic;font-size:19px;color:var(--pine);margin-bottom:26px}
+  .field{margin-bottom:20px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.field-row{grid-template-columns:1fr;gap:0}}
+  .field label{display:block;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink);margin-bottom:8px}
+  .field label .req{color:var(--gold)}
+  .field input,.field select,.field textarea{
+    width:100%;font-family:var(--body);font-size:15.5px;color:var(--ink);
+    padding:13px 15px;border:1px solid var(--line);border-radius:6px;background:#FCFAF5;
+    outline:none;transition:border-color .2s,box-shadow .2s;
+  }
+  .field textarea{resize:vertical;min-height:90px;line-height:1.5}
+  .field input::placeholder,.field textarea::placeholder{color:#A39C8C}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pine);box-shadow:0 0 0 3px rgba(23,62,51,.1)}
+  .field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23173E33' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:38px}
+  .apply-btn{
+    width:100%;font-family:var(--body);font-weight:600;font-size:16px;
+    background:var(--pine);color:var(--paper);border:none;cursor:pointer;
+    padding:17px;border-radius:6px;margin-top:6px;transition:background .2s,transform .2s;
+  }
+  .apply-btn:hover{background:var(--pine-2);transform:translateY(-1px)}
+  .apply-btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .apply-fine{font-size:12.5px;color:var(--muted);margin-top:16px;text-align:center;line-height:1.5}
+  .signup-error{display:none;font-size:14px;color:#B23B1E;margin-top:14px;text-align:center}
   .signup-error.show{display:block}
-  .cta-fine{font-size:13.5px;color:#8FA39A;margin-top:20px}
-  .signup.ok{display:none}
-  .signup-done{display:none;font-family:var(--display);font-style:italic;font-size:22px;color:#E9C97A}
-  .signup.ok + .signup-done{display:block}
+  .apply-card.done form,.apply-card.done .apply-fine{display:none}
+  .apply-success{display:none;text-align:center;padding:24px 0}
+  .apply-card.done .apply-success{display:block}
+  .apply-success .mark{width:54px;height:54px;border-radius:50%;background:var(--pine);color:var(--paper);display:grid;place-items:center;margin:0 auto 22px;font-size:26px}
+  .apply-success h3{font-family:var(--display);font-weight:500;font-size:28px;letter-spacing:-.01em;margin-bottom:12px}
+  .apply-success p{font-size:16px;color:var(--muted);max-width:34ch;margin:0 auto;line-height:1.6}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--pine-2);color:var(--paper);padding:0 0 56px}
@@ -193,7 +218,7 @@
       <a href="#calendar">The Programme</a>
       <a href="#who">Who It's For</a>
     </div>
-    <a href="#join" class="nav-cta">Enrol Free</a>
+    <a href="#join" class="nav-cta">Apply Free</a>
   </div>
 </nav>
 
@@ -206,7 +231,7 @@
         <h1 class="rv" style="transition-delay:.05s">Build the skill, system and <em>confidence</em> to sell every day.</h1>
         <p class="hero-sub rv" style="transition-delay:.12s">A structured daily programme for business owners and sales teams across Nigeria and beyond. One precise lesson, one real assignment, and a sales system that no longer depends on luck.</p>
         <div class="hero-actions rv" style="transition-delay:.18s">
-          <a href="#join" class="btn">Enrol in the Programme</a>
+          <a href="#join" class="btn">Apply for the Programme</a>
           <a href="#calendar" class="link">Review the full 21 days</a>
         </div>
       </div>
@@ -318,21 +343,70 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- APPLY -->
 <section class="cta" id="join">
   <div class="wrap rv">
-    <span class="kicker">Begin Tomorrow at 8:00 AM</span>
-    <h2>Do not sell for 21 days. Build a system that <em>keeps selling.</em></h2>
-    <p>Enrolment is free. Each morning you receive one lesson, one assignment and one prompt to act — for twenty-one days.</p>
-    <form class="signup" id="signupForm" action="https://formspree.io/f/xwvjezkz" method="POST">
-      <input type="email" name="email" placeholder="Your best email address" required>
-      <input type="hidden" name="_subject" value="New 21-Day Sales Programme enrolment">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-      <button type="submit">Enrol in the Programme</button>
-    </form>
-    <div class="signup-done">Enrolment confirmed. Day One arrives tomorrow at 8:00 AM.</div>
-    <p class="signup-error" role="alert"></p>
-    <p class="cta-fine">No spam. Unsubscribe at any time.</p>
+    <div class="apply-grid">
+      <div class="apply-intro">
+        <span class="kicker">Apply to Join · Begins at 8:00 AM</span>
+        <h2>Apply for the <em>Programme.</em></h2>
+        <p>Enrolment is free. Tell us a little about what you sell so each day's lesson lands with the right people — then watch your inbox.</p>
+        <div class="next-list">
+          <div class="row"><span class="i">01</span><p>Complete the form in under a minute.</p></div>
+          <div class="row"><span class="i">02</span><p>Receive a confirmation email to secure your place.</p></div>
+          <div class="row"><span class="i">03</span><p>Day One arrives the next morning at 8:00 AM.</p></div>
+        </div>
+      </div>
+
+      <div class="apply-card" id="applyCard">
+        <div class="form-kick">Your application</div>
+        <form id="signupForm" action="https://formspree.io/f/xwvjezkz" method="POST">
+          <div class="field">
+            <label for="f-name">Full name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" placeholder="e.g. Adaeze Okonkwo" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Email address <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">WhatsApp number <span class="req">*</span></label>
+              <input type="tel" id="f-phone" name="phone" placeholder="+234 800 000 0000" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-role">Which best describes you? <span class="req">*</span></label>
+            <select id="f-role" name="role" required>
+              <option value="" disabled selected>Select one…</option>
+              <option>Business owner</option>
+              <option>Sales team lead / manager</option>
+              <option>Sales representative</option>
+              <option>Online seller</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-biz">What do you sell?</label>
+            <input type="text" id="f-biz" name="business" placeholder="Your product, service or business">
+          </div>
+          <div class="field">
+            <label for="f-challenge">Your biggest sales challenge right now</label>
+            <textarea id="f-challenge" name="challenge" placeholder="Tell us what you're struggling with most — it helps us tailor the lessons."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New 21-Day Sales Programme application">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+          <button type="submit" class="apply-btn">Submit Application</button>
+          <p class="signup-error" role="alert"></p>
+        </form>
+        <p class="apply-fine">We'll only use your details to run the programme. No spam, unsubscribe anytime.</p>
+        <div class="apply-success">
+          <div class="mark">✓</div>
+          <h3>Application received.</h3>
+          <p>Check your inbox to confirm your place. Day One arrives the next morning at 8:00 AM.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -354,7 +428,7 @@
         <div class="foot-col">
           <h5>Get Started</h5>
           <a href="#who">Who It's For</a>
-          <a href="#join">Enrol Free</a>
+          <a href="#join">Apply Free</a>
         </div>
       </div>
     </div>
@@ -415,12 +489,13 @@
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   const form=document.getElementById('signupForm');
+  const card=document.getElementById('applyCard');
   const errBox=document.querySelector('.signup-error');
   form.addEventListener('submit',async e=>{
     e.preventDefault();
-    const btn=form.querySelector('button');
+    const btn=form.querySelector('.apply-btn');
     errBox.classList.remove('show');errBox.textContent='';
-    btn.disabled=true;btn.textContent='Sending…';
+    btn.disabled=true;btn.textContent='Submitting…';
     try{
       const res=await fetch(form.action,{
         method:'POST',
@@ -428,17 +503,18 @@
         headers:{'Accept':'application/json'}
       });
       if(res.ok){
-        form.classList.add('ok');           // reveals the in-place success message
+        card.classList.add('done');         // hides the form, reveals the success panel
+        card.scrollIntoView({behavior:'smooth',block:'center'});
       }else{
         const data=await res.json().catch(()=>({}));
         const msg=(data.errors&&data.errors.map(x=>x.message).join(', '))||'Something went wrong. Please try again.';
         errBox.textContent=msg;errBox.classList.add('show');
-        btn.disabled=false;btn.textContent='Enrol in the Programme';
+        btn.disabled=false;btn.textContent='Submit Application';
       }
     }catch(err){
       errBox.textContent='Network error — please check your connection and try again.';
       errBox.classList.add('show');
-      btn.disabled=false;btn.textContent='Enrol in the Programme';
+      btn.disabled=false;btn.textContent='Submit Application';
     }
   });
 </script>
